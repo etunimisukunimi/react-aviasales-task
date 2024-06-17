@@ -1,0 +1,110 @@
+.frame-block {
+    width: 280px;
+    height: 190px;
+    background: rgba(5, 12, 48, 0.4);
+    border: 1px solid rgba(255, 255, 255, 30%);
+    border-radius: 16px;
+    box-shadow: 0px 0px 90px 0px rgba(0, 255, 209, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.frame-span-box {
+    width: 22px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 30%);
+    border-radius: 4px;
+    background: #FFFFFF66;
+    margin: 0 0 0 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-indent: 0px;
+}
+
+.frame-start-span {
+    height: 25%;
+    width: 100%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    text-indent: 10px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+
+.frame-middle-content {
+    height: 40%;
+    width: 100%;
+    color: #FFFFFF80;
+    font-weight: 400;
+    font-size: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame-middle-content span {
+    margin: 4px 0 0 0;
+}
+
+.frame-input-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.frame-input {
+    width: 254px;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 50%);
+    background-color: #051237;
+    color: #ffffff;
+    text-indent: 13px;
+    outline: none;
+}
+    /* border: 1px solid rgb(73, 198, 99); */
+.frame-input::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    text-indent: 13px;
+}
+
+.frame-end-button {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame-end-button button {
+    cursor: pointer;
+    width: 254px;
+    height: 48px;
+    background: linear-gradient(90deg, rgb(47, 183, 88) 0%, rgb(47, 183, 88) 0.01%, rgb(36, 166, 115) 50%, rgb(24, 133, 172) 100%);
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.frame-end-button button:hover {
+    cursor: pointer;
+    width: 254px;
+    height: 48px;
+    background: linear-gradient(90deg, rgb(47, 183, 88) 0%, rgb(47, 183, 88) 0.01%, rgb(36, 166, 115) 50%, rgb(24, 133, 172) 100%);
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 900;
+    color: #ffffff;
+}
