@@ -1,7 +1,12 @@
 import './Main.css';
 import logo from "../images/main_logo.svg"
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function Main() {
+
+  const data = useSelector(state => state.user_email_reducer)
+
   return (
     <>
       <div className="avia-sales-main">
@@ -11,14 +16,18 @@ function Main() {
       </div>
       <div className="title-block">
         <div className='title-block-word'>
-          <span className='bold-text'> white span </span>
+          <span className='bold-text'>{data.mainSpan}</span>
           <br></br>
-          <span className='bold-text'><span className='title-gradient-span'> gradient span </span></span>
+          <div class="title-gradient">
+            <span className='bold-text title-gradient--span'>
+              {data.gradientSpan}
+            </span>
+          </div>
         </div>
-      </div>
+      </div >
       <div className="participation-block">
         <div className="participation-block-rules">
-          <span className='bold-text'>span span span</span>
+          <span className='regular-text'>{data.infoSpan}</span>
         </div>
       </div>
     </>

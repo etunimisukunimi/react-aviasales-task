@@ -1,28 +1,47 @@
+import { useState } from 'react';
 import './FrameComponent.css';
+import { useDispatch, useSelector } from 'react-redux';
 
-function frameInputBorderColor() {
-  document.getElementsByClassName('frame-input').style = 'border: 1px solid rgba(255, 255, 255, 30%';
+function FrameEmailComponent() {
 
-}
+  const dispatch = useDispatch()
 
-function FrameComponent() {
+  const [inputEmail, setInputEmail] = useState('')
+  const emailStyle = useSelector(state => state.user_email_reducer)
+
+  const handleEmailChange = (event) => {
+    setInputEmail(event.target.value);
+
+    if (inputEmail.includes('@')) {
+      dispatch({ type: 'USER_INJECTED_EMAIL' })
+    } else {
+      dispatch({ type: 'USER_UNINJECTED_EMAIL' })
+    }
+  }
+
+  const handleClick = () => {
+    dispatch({ type: 'USER_CONFIRM_EMAIL' })
+  }
+
   return (
-    <div className='frame-block'>
-      <div className='frame-start-span'>
-        <div className="frame-span-box">1</div>
+
+    <div className='frame' style={{ opacity: emailStyle.emailOpacity, pointerEvents: emailStyle.emailEvents, display: emailStyle.display }}>
+      <div className='frame__title'>
+        <div className="title--span">1</div>
         <span>Оставь актуальный email</span>
       </div>
-      <div className='frame-middle-content'>
-        <div className='frame-input-content'>
-          <input className="frame-input" id='frame-email-input' type='text' placeholder='Ввести email' onchange={frameInputBorderColor()}></input>
-          <span>Неверный формат почты</span>
+      <div className='frame__input'>
+        <div className='input-content'>
+          <input className="email-input" id='email-input' type='text' placeholder='Ввести email' onChange={handleEmailChange} />
+          <span className='input--span' style={{ color: emailStyle.incorrectColor }}>Неверный формат почты</span>
         </div>
       </div>
-      <div className='frame-end-button'>
-        <button type='button' id='frame-req-button'>Я оставил</button>
+      <div className='frame__button'>
+        <button className="frame__button--button" type='button' onClick={handleClick} disabled={emailStyle.disabled}>Я оставил</button>
       </div>
-    </div>
+    </div >
   );
 }
 
-export default FrameComponent;
+export default FrameEmailComponent;
+

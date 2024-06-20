@@ -2,14 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Main from './components/Main.js';
-import FrameEmailComponent from './components/FrameEmailComponent.js';
+import FrameStorage from './components/FrameStorage.js'
+import { Provider } from 'react-redux'
+import store from './store/store.js'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <Main />
-    <FrameEmailComponent />
+    <Provider store={store}>
+      <Main />
+      <FrameStorage
+      />
+    </Provider>
+
   </React.StrictMode>
 );
 

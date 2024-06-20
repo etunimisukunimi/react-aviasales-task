@@ -1,15 +1,27 @@
 .avia-sales-main {
   pointer-events: none;
   user-select: none;
-  margin: 110px 0 0 ;
+  margin: 110px 0 0;
   width: 1440px;
 }
+
 .bold-text {
-  font-weight: 700px;
+  margin-top: 17px;
   color: #ffffff;
   font-size: 40px;
+  font-weight: 700;
+  line-height: 40px;
   text-transform: uppercase;
 }
+
+.regular-text {
+  max-width: 500px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+
+}
+
 .avia-sales-logo img {
   height: 100%;
   width: 140px;
@@ -20,11 +32,15 @@
   height: auto;
 }
 
-.title-block-word {
-  width: 550px;
+.title-gradient {
+  margin: 17px 0 0 0;
 }
 
-.title-gradient-span {
+.title-block-word {
+  width: 590px;
+}
+
+.title-gradient--span {
   background: conic-gradient(from 160deg at 45% 37.5%, rgb(43, 101, 251) 0deg, rgb(40, 216, 255) 148.13deg, rgb(133, 255, 182) 238.12deg, rgb(23, 194, 19) 360deg) text;
   -webkit-text-fill-color: transparent;
 }
@@ -34,7 +50,6 @@
 }
 
 .participation-block-rules {
-  width: 550px;
+  width: 460px;
   color: #ffffff;
 }
-

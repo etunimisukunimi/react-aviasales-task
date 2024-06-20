@@ -1,4 +1,12 @@
-.frame-block {
+.frame__storage {
+    display: flex;
+    margin: 48px 0 0 0;
+}
+
+/* Frame Email-Share component styles */
+
+.frame {
+    margin: 0 24px 0 0;
     width: 280px;
     height: 190px;
     background: rgba(5, 12, 48, 0.4);
@@ -8,22 +16,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 100%;
+    transition: all 0.5s;
 }
 
-.frame-span-box {
-    width: 22px;
-    height: 20px;
-    border: 1px solid rgba(255, 255, 255, 30%);
-    border-radius: 4px;
-    background: #FFFFFF66;
-    margin: 0 0 0 13px;
+.frame__button {
+    height: 35%;
+    width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    text-indent: 0px;
+    align-items: center;
 }
 
-.frame-start-span {
+.frame__button--button {
+    cursor: pointer;
+    width: 254px;
+    height: 48px;
+    background: linear-gradient(90deg, rgb(47, 183, 88) 0%, rgb(36, 166, 115) 50%, rgb(24, 133, 172) 100%);
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 900;
+    color: #ffffff;
+    transition: all 0.5s;
+}
+
+.frame__button--button:hover {
+    background: linear-gradient(90deg, rgba(8, 183, 223) 3%, rgba(5, 183, 224) 7%, rgba(0, 131, 235) 96%);
+}
+
+.frame__button--button:active {
+    background: linear-gradient(90deg, rgba(64, 80, 159) 3%, rgba(67, 81, 160) 7%, rgba(30, 84, 205) 96%);
+}
+
+.frame__button--button:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 50%;
+}
+
+
+/* Email frame styles */
+
+.frame__title {
     height: 25%;
     width: 100%;
     color: #ffffff;
@@ -36,30 +72,43 @@
     font-weight: 700;
 }
 
+.title--span {
+    width: 22px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 30%);
+    border-radius: 4px;
+    background: #FFFFFF66;
+    margin: 0 0 0 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-indent: 0px;
+}
 
-
-.frame-middle-content {
+.frame__input {
     height: 40%;
     width: 100%;
     color: #FFFFFF80;
     font-weight: 400;
-    font-size: 9px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.frame-middle-content span {
+.input--span {
+    font-size: 9px;
     margin: 4px 0 0 0;
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
 }
 
-.frame-input-content {
+.input-content {
     display: flex;
     flex-direction: column;
 }
 
-.frame-input {
+.email-input {
     width: 254px;
     height: 50px;
     border-radius: 6px;
@@ -69,42 +118,87 @@
     text-indent: 13px;
     outline: none;
 }
-    /* border: 1px solid rgb(73, 198, 99); */
+
 .frame-input::placeholder {
     font-size: 14px;
     font-weight: 400;
     text-indent: 13px;
 }
 
-.frame-end-button {
-    height: 35%;
+/* Share frame content */
+
+.frame__share {
+    height: 40%;
     width: 100%;
+    font-weight: 400;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.frame-end-button button {
-    cursor: pointer;
-    width: 254px;
-    height: 48px;
-    background: linear-gradient(90deg, rgb(47, 183, 88) 0%, rgb(47, 183, 88) 0.01%, rgb(36, 166, 115) 50%, rgb(24, 133, 172) 100%);
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-    font-weight: 900;
-    color: #ffffff;
+.share-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.frame-end-button button:hover {
-    cursor: pointer;
-    width: 254px;
-    height: 48px;
-    background: linear-gradient(90deg, rgb(47, 183, 88) 0%, rgb(47, 183, 88) 0.01%, rgb(36, 166, 115) 50%, rgb(24, 133, 172) 100%);
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-    font-weight: 900;
-    color: #ffffff;
+.share--span {
+    font-size: 9px;
+    margin: 10px 0 0 13px;
+    color: rgba(255, 0, 0, 100%)
 }
+
+.share--icons {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.share-content--circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    transition: 0.3s;
+
+}
+
+.share-content--circle:hover {
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
+.share-content--facebook {
+    background: url(../images/facebook_logo.svg) no-repeat, linear-gradient(142.25deg, rgb(112, 173, 255) 20.57%, rgb(25, 119, 243) 48.47%, rgb(6, 75, 166) 78.79%);
+    background-position: center;
+    box-shadow: 0px 4px 5px 0px rgba(0, 12, 35, 0.5);
+    box-shadow: -10px 0px 20px 0px rgba(0, 58, 218, 0.35);
+}
+
+.share-content--vk {
+    background: url(../images/vk_logo.svg) no-repeat, linear-gradient(142.25deg, rgb(96, 170, 255) 20.57%, rgb(39, 135, 245) 50.89%, rgb(0, 92, 198) 78.79%);
+    background-position: center;
+    box-shadow: 0px 4px 5px 0px rgba(0, 12, 35, 0.5);
+    box-shadow: -8px -5px 20px 0px rgba(0, 119, 255, 0.46);
+}
+
+.share-content--twitter {
+    background: url(../images/twitter_logo.svg) no-repeat, linear-gradient(141.2deg, rgb(115, 202, 255) 20.61%, rgb(29, 161, 242) 50.17%, rgb(0, 124, 200) 82.31%);
+    background-position: center;
+    box-shadow: 0px 4px 5px 0px rgba(0, 12, 35, 0.5);
+    box-shadow: -8px 3px 20px 0px rgba(0, 158, 255, 0.4);
+}
+
+.share-content--instagram {
+    background: url(../images/instagram_logo.svg) no-repeat, linear-gradient(142.25deg, #D82D7E 20.57%, #DF406C 48.47%, #FA8F21 78.79%);
+    background-position: center;
+    box-shadow: 0px 4px 5px 0px rgba(0, 12, 35, 0.5);
+    box-shadow: -10px 0px 20px 0px rgba(255, 0, 108, 0.33);
+}
+
+
+
+
+/* border: 1px solid rgb(73, 198, 99); */
