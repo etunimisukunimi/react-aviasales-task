@@ -5,9 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 function FrameEmailComponent() {
 
   const dispatch = useDispatch()
+  const emailStyle = useSelector(state => state.user_email_reducer)
 
   const [inputEmail, setInputEmail] = useState('')
-  const emailStyle = useSelector(state => state.user_email_reducer)
+
+  const handleClick = () => {
+    dispatch({ type: 'USER_CONFIRM_EMAIL' })
+  }
 
   const handleEmailChange = (event) => {
     setInputEmail(event.target.value);
@@ -17,11 +21,10 @@ function FrameEmailComponent() {
     } else {
       dispatch({ type: 'USER_UNINJECTED_EMAIL' })
     }
+
   }
 
-  const handleClick = () => {
-    dispatch({ type: 'USER_CONFIRM_EMAIL' })
-  }
+
 
   return (
 

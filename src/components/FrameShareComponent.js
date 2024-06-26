@@ -7,7 +7,7 @@ export function FrameShareComponent() {
 
   const dispatch = useDispatch()
 
-  const emailStyle = useSelector(state => state.user_email_reducer)
+  const shareStyle = useSelector(state => state.user_email_reducer)
 
 
   const handleClick = () => {
@@ -15,7 +15,7 @@ export function FrameShareComponent() {
   }
 
   const handleShare = () => {
-    if (emailStyle.userShared == true) {
+    if (shareStyle.userShared == true) {
       dispatch({ type: 'USER_CONFIRM_SHARE' })
     } else {
       dispatch({ type: 'USER_UNCONFIRMED_SHARE' })
@@ -23,7 +23,7 @@ export function FrameShareComponent() {
   }
 
   return (
-    <div className={emailStyle.shareFrame}>
+    <div className={shareStyle.shareFrame}>
       <div className='frame__title'>
         <div className="title--span">2</div>
         <span>Поделись с друзьями</span>
@@ -36,7 +36,7 @@ export function FrameShareComponent() {
             <a className="share-content--circle share-content--twitter" href="#" onClick={handleClick} />
             <a className="share-content--circle share-content--instagram" href="#" onClick={handleClick} />
           </div>
-          <span className={emailStyle.shareSpan}>Надо все же поделиться</span>
+          <span className={shareStyle.shareSpan}>Надо все же поделиться</span>
         </div>
       </div>
       <div className='frame__button'>

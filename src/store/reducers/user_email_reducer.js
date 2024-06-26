@@ -42,8 +42,8 @@ const user_email_reducer = (state = defaultState, action) => {
                 shareSpan: 'share--span',
                 emailFrame: 'frame-display',
                 shareFrame: 'frame-display',
-                mailSpan: 'класс! теперь ты',
-                gradientSpan: 'участвуешь в конкурсе',
+                mailSpan: 'Класс! Теперь ты',
+                gradientSpan: 'Участвуешь в конкурсе',
                 infoSpan: 'Ты прошел все наши карты, но ты всегда можешь вызвать inDriver по-настоящему, для этого переходи по ссылке!',
                 finalButton: 'final__button--button'
             }

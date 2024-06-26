@@ -14,8 +14,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Main />
-      <FrameStorage
-      />
+      <FrameStorage />
       <FinalButtonComponent />
     </Provider>
 
