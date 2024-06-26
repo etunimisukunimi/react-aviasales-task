@@ -5,34 +5,53 @@ const user_email_reducer = (state = defaultState, action) => {
         case 'USER_INJECTED_EMAIL':
             return {
                 ...state,
-                disabled: state.disabled = false,
-                incorrectColor: 'rgba(255, 255, 255, 0.5)'
+                disabled: false,
+                emailSpan: 'input--span',
+                inputBorder: 'email-input'
             }
         case 'USER_UNINJECTED_EMAIL':
             return {
                 ...state,
-                emailEvents: state.emailEvents = 'auto',
-                disabled: state.disabled = true,
-                incorrectColor: 'rgba(245, 71, 89, 1)'
+                disabled: true,
+                emailSpan: 'input--span_incorrect',
+                inputBorder: 'email-input--incorrect'
             }
         case 'USER_CONFIRM_EMAIL':
             return {
                 ...state,
-                emailOpacity: state.emailOpacity = '50%',
-                emailEvents: state.emailEvents = 'none',
-                shareOpacity: state.shareOpacity = '100%',
-                shareEvents: state.shareEvents = 'auto',
+                emailFrame: 'frame-final',
+                shareFrame: 'frame',
+                inputBorder: 'email-input--final'
             }
-            case 'USER_CONFIRM_SHARE': return {
+
+        case 'USER_CLICK_SHARE':
+            return {
                 ...state,
-                mailSpan: state.mainSpan = 'класс! теперь ты',
-                gradientSpan: state.gradientSpan = 'участвуешь в конкурсе',
-                infoSpan: state.infoSpan = 'Ты прошел все наши карты, но ты всегда можешь вызвать inDriver по-настоящему, для этого переходи по ссылке!',
-                display: state.display = 'none'
+                userShared: true
             }
+
+        case 'USER_UNCONFIRMED_SHARE':
+            return {
+                ...state,
+                shareSpan: 'share--span_incorrect',
+            }
+
+        case 'USER_CONFIRM_SHARE':
+            return {
+                ...state,
+                shareSpan: 'share--span',
+                emailFrame: 'frame-display',
+                shareFrame: 'frame-display',
+                mailSpan: 'класс! теперь ты',
+                gradientSpan: 'участвуешь в конкурсе',
+                infoSpan: 'Ты прошел все наши карты, но ты всегда можешь вызвать inDriver по-настоящему, для этого переходи по ссылке!',
+                finalButton: 'final__button--button'
+            }
+
         default:
             return state;
     }
 }
 
 export default user_email_reducer;
+

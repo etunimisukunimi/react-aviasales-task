@@ -25,15 +25,15 @@ function FrameEmailComponent() {
 
   return (
 
-    <div className='frame' style={{ opacity: emailStyle.emailOpacity, pointerEvents: emailStyle.emailEvents, display: emailStyle.display }}>
+    <div className={emailStyle.emailFrame}>
       <div className='frame__title'>
         <div className="title--span">1</div>
         <span>Оставь актуальный email</span>
       </div>
       <div className='frame__input'>
         <div className='input-content'>
-          <input className="email-input" id='email-input' type='text' placeholder='Ввести email' onChange={handleEmailChange} />
-          <span className='input--span' style={{ color: emailStyle.incorrectColor }}>Неверный формат почты</span>
+          <input className={emailStyle.inputBorder} type='text' placeholder='Ввести email' onChange={handleEmailChange} />
+          <span className={emailStyle.emailSpan}>Неверный формат почты</span>
         </div>
       </div>
       <div className='frame__button'>
