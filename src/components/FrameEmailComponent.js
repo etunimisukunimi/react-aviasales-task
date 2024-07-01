@@ -73,7 +73,7 @@ function FrameEmailComponent() {
         </div>
       </div>
       <div className='frame__button'>
-        <button className={emailButton} type='button'
+        <button id='email_input_button' className={emailButton} type='button'
           onMouseEnter={() => setIsEmailButtonHovered(true)}
           onMouseLeave={() => setIsEmailButtonHovered(false)}
           onClick={handleClick}>

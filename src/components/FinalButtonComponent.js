@@ -6,7 +6,7 @@ import cn from 'classnames';
 function FinalButtonComponent() {
 
   const buttonDisplay = useSelector(state => state.user_email_reducer)
-// true 
+
   const handleClick = () => {
     alert('click!');
   }
