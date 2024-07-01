@@ -1,44 +1,31 @@
 import { useState } from 'react';
-import './FrameComponent.css';
+import './Frame.css';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
-function FrameEmailComponent() {
+function FrameEmail() {
 
   const dispatch = useDispatch();
 
-  const [isFrameHover, setIsFrameHover] = useState(false);
-
   const emailCompletion = useSelector(state => state.user_email_reducer);
 
-  const [isEmailValid, setIsEmailValid] = useState(true);
-  const [isEmailButtonHovered, setIsEmailButtonHovered] = useState(false);
-
-  const emailButton = cn('button__component', {
-    'button__component--disabled': isEmailValid,
-    'button__component--hover': isEmailButtonHovered,
-  });
-
-  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
-
-  const inputSpan = cn('input-span', {
-    'input-span--incorrect': isEmailInvalid,
-  });
-
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isEmailPressed, setIsEmailPressed] = useState(false);
+  const [isEmailCorrect, setIsEmailCorrect] = useState(true);
   const [inputEmail, setInputEmail] = useState('')
 
   const handleEmailChange = (event) => {
     setInputEmail(event.target.value);
     if (inputEmail.includes('@')) {
       setIsEmailValid(false);
-      setIsEmailInvalid(false);
+      setIsEmailCorrect(false);
+
     } else {
       setIsEmailValid(true);
-      setIsEmailInvalid(true);
+      setIsEmailCorrect(true);
     }
   }
 
-  const [isEmailPressed, setIsEmailPressed] = useState(false);
   const handleClick = () => {
     setIsEmailPressed(true);
     dispatch({ type: 'USER_CONFIRM_EMAIL' });
@@ -48,19 +35,24 @@ function FrameEmailComponent() {
     'frame--display': emailCompletion.frameDisplay,
     'frame-disabled': isEmailPressed,
     'frame-disabled-final': isEmailPressed,
-    'frame-hover': isFrameHover
   });
 
-  const emailInput = cn('email-input', {
-    'email-input--focus': isFrameHover,
-    'email-input--invalid': isEmailInvalid,
+  const emailInput = cn('email-input', 'email-input:hover', {
+    'email-input--invalid': isEmailValid,
     'email-input--disabled': isEmailPressed
   });
 
+  const emailButton = cn('button__component', {
+    'button__component--disabled': isEmailCorrect
+
+  });
+
+  const inputSpan = cn('input-span', {
+    'input-span--incorrect': isEmailValid,
+  });
+
   return (
-    <div className={emailFrame}
-      onMouseEnter={() => setIsFrameHover(true)}
-      onMouseLeave={() => setIsFrameHover(false)}>
+    <div className={emailFrame}>
       <div className='frame__title'>
         <div className="title--span">1</div>
         <span>Оставь актуальный email</span>
@@ -73,9 +65,7 @@ function FrameEmailComponent() {
         </div>
       </div>
       <div className='frame__button'>
-        <button id='email_input_button' className={emailButton} type='button'
-          onMouseEnter={() => setIsEmailButtonHovered(true)}
-          onMouseLeave={() => setIsEmailButtonHovered(false)}
+        <button className={emailButton} type='button'
           onClick={handleClick}>
           Я оставил
         </button>
@@ -84,5 +74,5 @@ function FrameEmailComponent() {
   );
 }
 
-export default FrameEmailComponent;
+export default FrameEmail;
 

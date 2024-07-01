@@ -1,26 +1,18 @@
 import { useState } from 'react';
-import './FrameComponent.css';
+import './Frame.css';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
 
-export function FrameShareComponent() {
+export function FrameShare() {
 
   const dispatch = useDispatch();
 
   const emailCompletion = useSelector(state => state.user_email_reducer);
 
-  const [frameDisplay, setFrameDisplay] = useState(false);
-  const [isEmailButtonHovered, setIsEmailButtonHovered] = useState(false);
-  const shareButton = cn('button__component', {
-    'button__component--hover': isEmailButtonHovered,
-  });
-
-  const [isFrameHover, setIsFrameHover] = useState(false);
   const shareFrame = cn('frame', {
     'frame--display': emailCompletion.frameDisplay,
     'frame-disabled': emailCompletion.userConfirmEmail,
-    'frame-hover': isFrameHover,
   });
 
   const [isSharePressed, setIsSharePressed] = useState(false);
@@ -41,9 +33,7 @@ export function FrameShareComponent() {
 
 
   return (
-    <div className={shareFrame}
-      onMouseEnter={() => setIsFrameHover(true)}
-      onMouseLeave={() => setIsFrameHover(false)}>
+    <div className={shareFrame}>
       <div className='frame__title'>
         <div className="title--span">2</div>
         <span>Поделись с друзьями</span>
@@ -51,18 +41,16 @@ export function FrameShareComponent() {
       <div className='frame__share'>
         <div className='share-content'>
           <div className='share-icons'>
-            <a className="share-content--circle share-content--facebook" href="#" onClick={() => setIsShareConfirm(true)} />
-            <a className="share-content--circle share-content--vk" href="#" onClick={() => setIsShareConfirm(true)} />
-            <a className="share-content--circle share-content--twitter" href="#" onClick={() => setIsShareConfirm(true)} />
-            <a className="share-content--circle share-content--instagram" href="#" onClick={() => setIsShareConfirm(true)} />
+            <button className="share-content--circle share-content--facebook" href="#" onClick={() => setIsShareConfirm(true)} />
+            <button className="share-content--circle share-content--vk" href="#" onClick={() => setIsShareConfirm(true)} />
+            <button className="share-content--circle share-content--twitter" href="#" onClick={() => setIsShareConfirm(true)} />
+            <button className="share-content--circle share-content--instagram" href="#" onClick={() => setIsShareConfirm(true)} />
           </div>
           <span className={shareConfirm}>Надо все же поделиться</span>
         </div>
       </div>
       <div className='frame__button'>
-        <button className={shareButton} type='button'
-          onMouseEnter={() => setIsEmailButtonHovered(true)}
-          onMouseLeave={() => setIsEmailButtonHovered(false)}
+        <button className='button__component' type='button'
           onClick={handleClick}>
           Я поделился</button>
       </div>
@@ -70,4 +58,4 @@ export function FrameShareComponent() {
   );
 }
 
-export default FrameShareComponent;
+export default FrameShare;

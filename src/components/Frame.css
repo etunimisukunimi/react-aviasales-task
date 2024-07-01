@@ -29,7 +29,7 @@
     border: 1px solid rgb(73, 198, 99, 100%);
 }
 
-.frame-hover {
+.frame:hover {
     border: 1px solid rgb(73, 198, 99, 100%);
 }
 
@@ -59,8 +59,12 @@
     transition: all 0.5s;
 }
 
-.button__component--hover {
-    background: linear-gradient(90deg, rgba(8, 183, 223) 3%, rgba(5, 183, 224) 7%, rgba(0, 131, 235) 96%);
+.button__component:hover {
+    opacity: 85%;
+}
+
+.button__component:active {
+    opacity: 50%;
 }
 
 .button__component--active {
@@ -144,13 +148,16 @@
     transition: 0.3s;
 }
 
+.email-input:hover {
+    border: 1px solid rgb(73, 198, 99, 100%);
+}
+
 .frame-input::placeholder {
     font-size: 14px;
     font-weight: 400;
     text-indent: 13px;
 }
 
-.email-input--focus,
 .email-input--disabled {
     border: 1px solid rgb(73, 198, 99, 100%);
 }
@@ -199,6 +206,10 @@
 }
 
 .share-content--circle {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background: none;
     width: 48px;
     height: 48px;
     border-radius: 100%;
@@ -255,12 +266,4 @@
     font-size: 16px;
     font-weight: 900;
     color: #ffffff;
-}
-
-.final__button--button:hover {
-    background: linear-gradient(90deg, rgba(8, 183, 223) 3%, rgba(5, 183, 224) 7%, rgba(0, 131, 235) 96%);
-}
-
-.final_button-button:active {
-    background: linear-gradient(90deg, rgba(64, 80, 159) 3%, rgba(67, 81, 160) 7%, rgba(30, 84, 205) 96%);
 }

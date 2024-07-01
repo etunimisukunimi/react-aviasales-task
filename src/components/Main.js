@@ -1,7 +1,8 @@
 import './Main.css';
 import logo from "../images/main_logo.svg"
-import { useDispatch, useSelector } from 'react-redux';
-
+import { useSelector } from 'react-redux';
+import FrameShare from './FrameShare.js'
+import FrameEmail from './FrameEmail.js'
 
 function Main() {
 
@@ -30,7 +31,13 @@ function Main() {
           <span className='regular-text'>{data.infoSpan}</span>
         </div>
       </div>
+      <div className='frame__storage'>
+        <FrameEmail />
+        <FrameShare />
+      </div>
+
     </>
+
   );
 }
 

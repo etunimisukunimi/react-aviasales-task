@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import './FrameComponent.css';
+import React from 'react';
+import './Frame.css';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
-function FinalButtonComponent() {
+function FinalButton() {
 
   const buttonDisplay = useSelector(state => state.user_email_reducer)
 
@@ -11,7 +11,7 @@ function FinalButtonComponent() {
     alert('click!');
   }
 
-  const finalButton = cn('final__button', {
+  const finalButton = cn('button__component', 'final__button', {
     'final__button--disabled': buttonDisplay.userGetFinalScreen
   })
 
@@ -22,4 +22,4 @@ function FinalButtonComponent() {
   );
 }
 
-export default FinalButtonComponent;
+export default FinalButton;
