@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './Frame.css';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
+import axios from 'axios';
 
 function FrameEmail() {
 
@@ -13,6 +14,7 @@ function FrameEmail() {
   const [isEmailPressed, setIsEmailPressed] = useState(false);
   const [isEmailCorrect, setIsEmailCorrect] = useState(true);
   const [inputEmail, setInputEmail] = useState('')
+  const [response, setResponse] = useState("");
 
   const handleEmailChange = (event) => {
     setInputEmail(event.target.value);
@@ -26,9 +28,22 @@ function FrameEmail() {
     }
   }
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     setIsEmailPressed(true);
     dispatch({ type: 'USER_CONFIRM_EMAIL' });
+
+    const url = 'http://localhost:8080/api/create_email';
+    const data = { email: inputEmail };
+
+    axios.post(url, data)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   }
 
   const emailFrame = cn('frame', {
@@ -66,7 +81,9 @@ function FrameEmail() {
       </div>
       <div className='frame__button'>
         <button className={emailButton} type='button'
-          onClick={handleClick}>
+          onClick={handleClick}
+          disabled={isEmailCorrect}
+          >
           Я оставил
         </button>
       </div>
