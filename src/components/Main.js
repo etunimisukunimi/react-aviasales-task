@@ -19,7 +19,7 @@ function Main() {
         <div className='title-block-word'>
           <span className='bold-text'>{data.mainSpan}</span>
           <br></br>
-          <div class="title-gradient">
+          <div className="title-gradient">
             <span className='bold-text title-gradient--span'>
               {data.gradientSpan}
             </span>

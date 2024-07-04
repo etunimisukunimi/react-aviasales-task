@@ -14,14 +14,13 @@ function FrameEmail() {
   const [isEmailPressed, setIsEmailPressed] = useState(false);
   const [isEmailCorrect, setIsEmailCorrect] = useState(true);
   const [inputEmail, setInputEmail] = useState('')
-  const [response, setResponse] = useState("");
 
-  const handleEmailChange = (event) => {
-    setInputEmail(event.target.value);
-    if (inputEmail.includes('@')) {
+  const handleEmailChange = (e) => {
+    setInputEmail(e.target.value)
+    if (/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(inputEmail)) {
       setIsEmailValid(false);
       setIsEmailCorrect(false);
-
+      dispatch({ type: 'USER_VALID_EMAIL' })
     } else {
       setIsEmailValid(true);
       setIsEmailCorrect(true);
@@ -30,19 +29,37 @@ function FrameEmail() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setIsEmailPressed(true);
-    dispatch({ type: 'USER_CONFIRM_EMAIL' });
-
-    const url = 'http://localhost:8080/api/create_email';
+    const url = 'http://localhost:8080/api/';
     const data = { email: inputEmail };
 
-    axios.post(url, data)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+
+    axios.get(url + 'get_emails')
+      .then(function (response) {
+        const validEmail = response.data
+        if (validEmail.find(validEmail => validEmail.email === inputEmail)) {
+          setIsEmailValid(true)
+          setIsEmailCorrect(true)
+          dispatch({ type: 'USER_INVALID_EMAIL' });
+        } else {
+          postEmail();
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    const postEmail = () => {
+      axios.post(url + 'create_email', data)
+        .then(function (response) {
+          console.log(response);
+          localStorage.setItem('user_id', response.data.rows[0].id);
+          setIsEmailPressed(true);
+          dispatch({ type: 'USER_CONFIRM_EMAIL' });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
 
   }
 
@@ -76,14 +93,13 @@ function FrameEmail() {
         <div className='input-content'>
           <input className={emailInput} type='text' placeholder='Ввести email'
             onChange={handleEmailChange} />
-          <span className={inputSpan}>Неверный формат почты</span>
+          <span className={inputSpan}>{emailCompletion.emailInfo}</span>
         </div>
       </div>
       <div className='frame__button'>
         <button className={emailButton} type='button'
           onClick={handleClick}
-          disabled={isEmailCorrect}
-          >
+        >
           Я оставил
         </button>
       </div>
