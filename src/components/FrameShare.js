@@ -41,17 +41,18 @@ export function FrameShare() {
       <div className='frame__share'>
         <div className='share-content'>
           <div className='share-icons'>
-            <button className="share-content--circle share-content--facebook" href="#" onClick={() => setIsShareConfirm(true)} />
-            <button className="share-content--circle share-content--vk" href="#" onClick={() => setIsShareConfirm(true)} />
-            <button className="share-content--circle share-content--twitter" href="#" onClick={() => setIsShareConfirm(true)} />
-            <button className="share-content--circle share-content--instagram" href="#" onClick={() => setIsShareConfirm(true)} />
+            <button className="share-content--circle share-content--facebook" href="#" onClick={() => setIsShareConfirm(true)} disabled={emailCompletion.userConfirmEmail} />
+            <button className="share-content--circle share-content--vk" href="#" onClick={() => setIsShareConfirm(true)} disabled={emailCompletion.userConfirmEmail} />
+            <button className="share-content--circle share-content--twitter" href="#" onClick={() => setIsShareConfirm(true)} disabled={emailCompletion.userConfirmEmail} />
+            <button className="share-content--circle share-content--instagram" href="#" onClick={() => setIsShareConfirm(true)} disabled={emailCompletion.userConfirmEmail} />
           </div>
           <span className={shareConfirm}>Надо все же поделиться</span>
         </div>
       </div>
       <div className='frame__button'>
         <button className='button__component' type='button'
-          onClick={handleClick}>
+          onClick={handleClick}
+          disabled={emailCompletion.userConfirmEmail}>
           Я поделился</button>
       </div>
     </div>

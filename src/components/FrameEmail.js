@@ -92,13 +92,15 @@ function FrameEmail() {
       <div className='frame__input'>
         <div className='input-content'>
           <input className={emailInput} type='text' placeholder='Ввести email'
-            onChange={handleEmailChange} />
+            onChange={handleEmailChange}
+            disabled={isEmailPressed}/>
           <span className={inputSpan}>{emailCompletion.emailInfo}</span>
         </div>
       </div>
       <div className='frame__button'>
         <button className={emailButton} type='button'
           onClick={handleClick}
+          disabled={isEmailPressed}
         >
           Я оставил
         </button>
